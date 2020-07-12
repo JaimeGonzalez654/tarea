@@ -1,0 +1,51 @@
+def minComb(estadia):
+    tiempo = 480
+    while estadia < 0:
+        estadia = int(input("ingrese un valor valido para su estadia: "))
+    if estadia <= 480:
+        precio = 0
+    if estadia > 480:
+        for i in range (1,estadia):
+            tiempo = tiempo + 480
+            while estadia < tiempo:
+                precio = (5000*i)
+                return precio
+    return precio
+#################################################################
+def costoPasajero(hrsViaje,costoBase,minComb):
+    CostoPasajero = (hrsViaje*30000)+ costoBase + minComb
+    return CostoPasajero
+#################################################################
+def validaEntrada(num,min):
+    while num < min:
+        num = int(input("ingrese un valor valido porfavor: "))
+    return num
+    
+        
+
+### preograma principal ###
+masBarato = 999999999999999
+print("╔═══════════════════════════════════════════════════╗")
+print("║     bienvenido al sistema de aerolineas LATAM     ║")     
+print("╚═══════════════════════════════════════════════════╝")
+vuelos = int(input("¿Cuántos vuelos va a cotizar?"))
+for i in range (1,vuelos+1):
+    print("Vuelo: Oferta",i)
+    x = int(input("Hola! ¿cuantos minutos se quedará en el terminal?: "))
+    x = validaEntrada(x,0)
+    resultado = minComb(x)
+    y = int(input("¿y de cuantas horas es su viaje?: "))
+    y = validaEntrada(y,0)
+    z = int(input("¿Cual es el coste base del viaje?: "))
+    z = validaEntrada(z,0)
+    costoTotal =(costoPasajero(y,z,resultado))
+    print("Precio total: ",costoTotal)
+    while masBarato > costoTotal:
+        masBarato  = (costoTotal)
+print("El viaje mas barato es el de ",masBarato,"pesos")
+print("Gracias por preferirnos!!")
+        
+        
+        
+
+
