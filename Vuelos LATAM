@@ -1,0 +1,21 @@
+from modulosLATAM import*
+masBarato = 999999999999999
+print("╔═══════════════════════════════════════════════════╗")
+print("║     bienvenido al sistema de aerolineas LATAM     ║")     
+print("╚═══════════════════════════════════════════════════╝")
+vuelos = int(input("¿Cuántos vuelos va a cotizar?"))
+for i in range (1,vuelos+1):
+    print("Vuelo: Oferta",i)
+    x = int(input("Hola! ¿cuantos minutos se quedará en el terminal?: "))
+    x = validaEntrada(x,0)
+    resultado = minComb(x)
+    y = int(input("¿y de cuantas horas es su viaje?: "))
+    y = validaEntrada(y,0)
+    z = int(input("¿Cual es el coste base del viaje?: "))
+    z = validaEntrada(z,0)
+    costoTotal =(costoPasajero(y,z,resultado))
+    print("Precio total: ",costoTotal)
+    while masBarato > costoTotal:
+        masBarato  = (costoTotal)
+print("El viaje mas barato es el de ",masBarato,"pesos")
+print("Gracias por preferirnos!!")
